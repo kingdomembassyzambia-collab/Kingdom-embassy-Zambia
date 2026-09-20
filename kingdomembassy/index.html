@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINGDOM EMBASSY CENTRE ZAMBIA</title>
+    <style>
+        /* --- CSS STYLING --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #060913; /* Deeper space background */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Twinkling Star Layer Container Placement */
+        #starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        h1 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-size: 1.5rem;
+            z-index: 10;
+            text-shadow: 0 0 15px rgba(88, 166, 255, 0.6);
+        }
+
+        /* Container that crops the image bounds */
+        .slider-wrapper {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(88, 166, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            z-index: 10;
+            background-color: #161b22;
+        }
+
+        /* The moving track holding the images side-by-side */
+        .slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+        }
+
+        /* Individual slide formatting */
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Navigation Dots */
+        .dots-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #30363d;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #58a6ff;
+            transform: scale(1.2);
+        }
+
+        /* Floating Action Redirect Link Interface Styling */
+        .redirect-icon-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(88, 166, 255, 0.95);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .redirect-icon-btn svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover animation states */
+        .redirect-icon-btn:hover {
+            background-color: #58a6ff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(88, 166, 255, 0.4);
+        }
+
+        .redirect-icon-btn:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        /* Responsive scaling for smaller monitors/laptops */
+        @media (max-width: 650px) {
+            .slider-wrapper {
+                width: 90vw;
+                height: 60vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Colorful Background Canvas Element -->
+    <canvas id="starfield"></canvas>
+
+    <h1>KINGDOM EMBASSY CENTRE ZAMBIA</h1>
+
+    <!-- --- HTML STRUCTURE --- -->
+    <div class="slider-wrapper">
+        
+        <!-- Points directly to your local hesed-master project folder -->
+        <a href="kingdomembassy/index.html" target="_self" class="redirect-icon-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span>Click Here</span>
+        </a>
+
+        <div class="slider-track" id="sliderTrack">
+            <!-- Your Local Folder Images -->
+            <div class="slide"><img src="images/kef1.jpg" alt="Slide 1"></div>
+            <div class="slide"><img src="images/kef2.jpg" alt="Slide 2"></div>
+            <div class="slide"><img src="images/kef3.jpg" alt="Slide 3"></div>
+            <div class="slide"><img src="images/kef4.jpg" alt="Slide 4"></div>
+            <div class="slide"><img src="images/kef5.JPG" alt="Slide 5"></div>
+            <div class="slide"><img src="images/kef11.jpg" alt="Slide 6"></div>
+            <div class="slide"><img src="images/kef7.jpg" alt="Slide 7"></div>
+            <div class="slide"><img src="images/kef9.jpg" alt="Slide 8"></div>
+            <div class="slide"><img src="images/kef12.JPG" alt="Slide 9"></div>
+            <div class="slide"><img src="images/kef8.jpg" alt="Slide 10"></div>
+        </div>
+    </div>
+
+    <!-- Indicator Dots tracking current active sliding position -->
+    <div class="dots-container" id="dotsContainer"></div>
+
+    <!-- --- JAVASCRIPT LOGIC --- -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // ========================================================
+            // 🌟 MULTI-COLOR STARFIELD ENGINE
+            // ========================================================
+            const canvas = document.getElementById('starfield');
+            const ctx = canvas.getContext('2d');
+            
+            let stars = [];
+            const numStars = 80; 
+
+            const cosmicColors = [
+                'rgba(88, 166, 255, ',   // Neon Blue
+                'rgba(187, 134, 252, ',  // Purple
+                'rgba(255, 121, 198, ',  // Pink
+                'rgba(255, 184, 108, ',  // Gold
+                'rgba(255, 255, 255, '   // White
+            ];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            for (let i = 0; i < numStars; i++) {
+                const randomColorBase = cosmicColors[Math.floor(Math.random() * cosmicColors.length)];
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2.5 + 1.2, 
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.015 + 0.008,
+                    colorBase: randomColorBase
+                });
+            }
+
+            function drawStars() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                stars.forEach(star => {
+                    star.alpha += star.speed;
+                    if (star.alpha > 1 || star.alpha < 0.2) {
+                        star.speed = -star.speed;
+                    }
+
+                    ctx.save();
+                    ctx.fillStyle = star.colorBase + Math.max(0.2, Math.min(1, star.alpha)) + ')';
+                    ctx.shadowBlur = star.radius * 3;
+                    ctx.shadowColor = star.colorBase + '1)';
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                });
+
+                requestAnimationFrame(drawStars);
+            }
+            drawStars();
+
+            // ========================================================
+            // 📸 IMAGE CAROUSEL SLIDER LOGIC
+            // ========================================================
+            const track = document.getElementById('sliderTrack');
+            const slides = document.querySelectorAll('.slide');
+            const dotsContainer = document.getElementById('dotsContainer');
+            
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            const slideIntervalTime = 3000;
+
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll('.dot');
+
+            function goToSlide(index) {
+                currentIndex = index;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                dots.forEach((dot, idx) => {
+                    if (idx === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function startAutoSlide() {
+                setInterval(() => {
+                    let nextIndex = currentIndex + 1;
+                    if (nextIndex >= totalSlides) {
+                        nextIndex = 0; 
+                    }
+                    goToSlide(nextIndex);
+                }, slideIntervalTime);
+            }
+
+            startAutoSlide();
+        });
+    </script>
+</body>
+</html>
